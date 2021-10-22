@@ -6,6 +6,8 @@ import views.MainWindow;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class LoginView extends JFrame {
     private JPanel contentPane;
@@ -77,15 +79,15 @@ public class LoginView extends JFrame {
         if (user != null) {
             userController = new UserController(this, user);
             if (userController.validateUser()) {
-                System.out.println("SI");
+                System.out.println("[INFO](LoginView): User -> " + user.getUsername());
+                // TODO: 22/10/2021 Mandar mensaje a la ventana principal de que el usuario es correcto
+                // Cerramos la ventana
+                getMainWindow().setVisible(true); // Mostrar ventana
+                dispose();
             } else {
-                System.out.println("NO");
+                System.err.println("[INFO](LoginView): User -> " + user.getUsername() + ", not exists!");
             }
         }  // TODO: 21/10/2021 Mensaje de error o validación
-
-
-        getMainWindow().setVisible(true); // Mostrar ventana
-        dispose();
     }
 
     private void onCancel() {
