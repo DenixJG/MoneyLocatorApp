@@ -2,12 +2,13 @@ package views.login;
 
 import controllers.UserController;
 import models.User;
+import org.netbeans.validation.api.builtin.stringvalidation.StringValidators;
+import org.netbeans.validation.api.ui.ValidationGroup;
+import org.netbeans.validation.api.ui.swing.ValidationPanel;
 import views.MainWindow;
 
 import javax.swing.*;
 import java.awt.event.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class LoginView extends JFrame {
     private JPanel contentPane;
@@ -17,19 +18,17 @@ public class LoginView extends JFrame {
     private JLabel lblUsernameIcon;
     private JLabel lblPasswordIcon;
     private JLabel lblCloseWindowIcon;
+    private ValidationPanel validationPanel;
     private JButton buttonCancel;
 
     private MainWindow mainWindow; // Ventana Padre
-    private UserController userController; // Controlador
+
+    // Controladores
+    private UserController userController;
 
     public LoginView() {
-        setSize(400, 300);
-        setUndecorated(true); // Quitar frame de la ventana
-        setLocationRelativeTo(null); // Centrar ventana en la pantalla
-        setResizable(false); // No se puede redimensionar
-        setContentPane(contentPane);
-        // setModal(true);
-        getRootPane().setDefaultButton(btnLogin);
+        initComponents();
+        validateNonEmptyInputs(validationPanel.getValidationGroup()); // Validamos los inputs
 
         btnLogin.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -38,7 +37,7 @@ public class LoginView extends JFrame {
         });
 
         // Cerrar al hacer clic en el botón X y efecto hover
-        // TODO: 20/10/2021 Extraer los eventos en metodos o en otra clase
+        // TODO: 20/10/2021 Extraer los eventos en métodos o en otra clase
         lblCloseWindowIcon.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -73,6 +72,21 @@ public class LoginView extends JFrame {
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
+    /**
+     * Muestra y configura las opciones de la ventana
+     */
+    private void initComponents() {
+        setSize(400, 300);
+        setUndecorated(true); // Quitar frame de la ventana
+        setLocationRelativeTo(null); // Centrar ventana en la pantalla
+        setResizable(false); // No se puede redimensionar
+        setContentPane(contentPane);
+        // setModal(true);
+        getRootPane().setDefaultButton(btnLogin);
+    }
+
+    // FIXME: 23/10/2021 Funciona en el ordenador de clase, y el código
+    //  es el mismo, la carpeta no se mueve porque esta en OneDrive, comprobar porque falla en casa.
     private void onOK() {
         // add your code here
         User user = getUserToLogin();
@@ -94,6 +108,16 @@ public class LoginView extends JFrame {
         // add your code here if necessary
         getMainWindow().setVisible(true); // Al cerrar se vuelve a mostrar la ventana Padre
         dispose();
+    }
+
+    /**
+     * Válida que los inputs de nombre de usuario y de contraseña no estén vacíos
+     *
+     * @param validationGroup {@linkplain ValidationGroup}
+     */
+    private void validateNonEmptyInputs(ValidationGroup validationGroup) {
+        validationGroup.add(txtUsername, StringValidators.REQUIRE_NON_EMPTY_STRING);
+        validationGroup.add(pwdPassword, StringValidators.REQUIRE_NON_EMPTY_STRING);
     }
 
     /**

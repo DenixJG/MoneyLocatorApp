@@ -34,7 +34,7 @@
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text resource-bundle="Resources" key="register.btn"/>
+                  <text resource-bundle="Bundle" key="register.btn"/>
                 </properties>
               </component>
             </children>
@@ -62,7 +62,7 @@
               <icon value="icons/mail-icon_32.png"/>
               <labelFor value="d855b"/>
               <text value=""/>
-              <toolTipText resource-bundle="Resources" key="tooltip.email"/>
+              <toolTipText resource-bundle="Bundle" key="tooltip.email"/>
             </properties>
           </component>
           <component id="ce2b9" class="javax.swing.JLabel" binding="lblPasswd">
@@ -73,7 +73,7 @@
               <icon value="icons/passwd-icon_32.png"/>
               <labelFor value="5fce9"/>
               <text value=""/>
-              <toolTipText resource-bundle="Resources" key="tooltip.passwd"/>
+              <toolTipText resource-bundle="Bundle" key="tooltip.passwd"/>
             </properties>
           </component>
           <component id="272db" class="javax.swing.JLabel" binding="lblRepPasswd">
@@ -84,7 +84,7 @@
               <icon value="icons/passwd-icon_32.png"/>
               <labelFor value="99f6f"/>
               <text value=""/>
-              <toolTipText resource-bundle="Resources" key="tooltip.rep.passwd"/>
+              <toolTipText resource-bundle="Bundle" key="tooltip.rep.passwd"/>
             </properties>
           </component>
           <component id="ba888" class="javax.swing.JTextField" binding="txtUsername">
@@ -103,7 +103,7 @@
               <icon value="icons/user-icon_32.png"/>
               <labelFor value="ba888"/>
               <text value=""/>
-              <toolTipText resource-bundle="Resources" key="tooltip.username"/>
+              <toolTipText resource-bundle="Bundle" key="tooltip.username"/>
             </properties>
           </component>
           <component id="99f6f" class="javax.swing.JPasswordField" binding="pwdRepPassword">
@@ -170,7 +170,7 @@
           <icon value="icons/close-icon_32.png"/>
           <opaque value="false"/>
           <text value=""/>
-          <toolTipText resource-bundle="Resources" key="close.window"/>
+          <toolTipText resource-bundle="Bundle" key="close.window"/>
         </properties>
       </component>
     </children>

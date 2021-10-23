@@ -10,6 +10,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="flatlaf-1.6" level="project" />
     <orderEntry type="library" name="mongodb-connector_3.10" level="project" />
-    <orderEntry type="library" name="validation-api_2.0" level="project" />
+    <orderEntry type="library" name="validation-api" level="project" />
   </component>
 </module>
