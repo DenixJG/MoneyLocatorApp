@@ -92,7 +92,7 @@ public class LoginView extends JFrame {
         User user = getUserToLogin();
         if (user != null) {
             userController = new UserController(this, user);
-            if (userController.validateUser()) {
+            if (userController.loginUser()) {
                 System.out.println("[INFO](LoginView): User -> " + user.getUsername());
                 // TODO: 22/10/2021 Mandar mensaje a la ventana principal de que el usuario es correcto
                 // Cerramos la ventana

@@ -13,24 +13,36 @@ public class UserController {
     private MongoController mongoController; // Controlador de la base de datos
     private User userModel;
 
+    /**
+     * Constructor para la vista de login.
+     *
+     * @param loginView {@linkplain LoginView}
+     * @param userModel {@linkplain User}
+     */
     public UserController(LoginView loginView, User userModel) {
         this.loginView = loginView;
         this.userModel = userModel;
         this.mongoController = new MongoController();
     }
 
+    /**
+     * Constructor para la vista de registro.
+     *
+     * @param registerView {@linkplain RegisterView}
+     * @param userModel    {@linkplain User}
+     */
     public UserController(RegisterView registerView, User userModel) {
         this.registerView = registerView;
         this.userModel = userModel;
     }
 
-    public boolean validateUser(User user) {
-        User dbUser = this.mongoController.getUser(this.userModel.getUsername());
-        return dbUser.equals(user);
-    }
-
-    public boolean validateUser() {
-        User dbUser = this.mongoController.getUser(this.userModel.getUsername());
+    /**
+     * Inicia sesión con el usuario que se ha pasado como modelo en el constructor
+     *
+     * @return {@code true/false} Si el usuario existe o no.
+     */
+    public boolean loginUser() {
+        User dbUser = this.mongoController.getUser(getUsername());
         if (dbUser != null) {
             return dbUser.equals(this.userModel);
         }
