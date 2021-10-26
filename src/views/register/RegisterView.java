@@ -1,9 +1,12 @@
 package views.register;
 
+import controllers.UserController;
+import models.User;
 import views.MainWindow;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.Arrays;
 
 public class RegisterView extends JFrame {
     private JPanel contentPane;
@@ -18,7 +21,10 @@ public class RegisterView extends JFrame {
     private JLabel lblRepPasswd;
     private JLabel lblCloseWindowIcon;
 
-    private MainWindow mainWindow;
+    private MainWindow mainWindow; // Ventana padre
+
+    // Controladores
+    private UserController userController;
 
     public RegisterView() {
         setSize(400, 300);
@@ -72,14 +78,45 @@ public class RegisterView extends JFrame {
 
     private void onOK() {
         // add your code here
-        getMainWindow().setVisible(true);
-        dispose();
+        User user = getUserToRegister();
+        if (user != null) {
+            userController = new UserController(this, user);
+            if (!userController.existUser()) {
+                // Registramos el usuario, ya que el nombre de usuario es único.
+                // TODO: 26/10/2021 Agregar panel de validación.
+                userController.registerUser();
+                getMainWindow().setVisible(true);
+                dispose();
+            } else {
+                // No se puede registrar el nombre de usuario ya está en la base de datos.
+                System.err.println("[ERR]: El nombre de usuario ya existe en la base de datos");
+            }
+        }
     }
 
     private void onCancel() {
         // add your code here if necessary
         getMainWindow().setVisible(true);
         dispose();
+    }
+
+    /**
+     * Devuelve el usuario que <b>intenta</b> registrarse
+     *
+     * @return {@linkplain User}
+     */
+    private User getUserToRegister() {
+        if (!txtUsername.getText().equals("") && pwdPassword.getPassword().length > 0 && !txtEmail.getText().equals("")) {
+            if (Arrays.equals(pwdPassword.getPassword(), pwdRepPassword.getPassword())) {
+                return new User(txtUsername.getText(), txtEmail.getText(), pwdPassword.getText());
+            } else {
+                // Las contraseñas no son iguales
+                return null;
+            }
+        } else {
+            // Campos obligatorios varios, devolver null
+            return null;
+        }
     }
 
 

@@ -5,6 +5,7 @@ import org.bson.types.ObjectId;
 import views.login.LoginView;
 import views.register.RegisterView;
 
+import java.io.File;
 import java.util.UUID;
 
 public class UserController {
@@ -34,6 +35,7 @@ public class UserController {
     public UserController(RegisterView registerView, User userModel) {
         this.registerView = registerView;
         this.userModel = userModel;
+        this.mongoController = new MongoController();
     }
 
     /**
@@ -47,6 +49,23 @@ public class UserController {
             return dbUser.equals(this.userModel);
         }
         return false;
+    }
+
+    /**
+     * Registra un nuevo usuario que se ha pasado como modelo en el constructor.
+     */
+    public void registerUser() {
+        this.mongoController.addNewUser(this.userModel);
+    }
+
+    /**
+     * Comprueba si existe el usuario en la base de datos, toma el usuario del modelo
+     * pasado en el constructor.
+     *
+     * @return {@code true/false} Si existe o no.
+     */
+    public boolean existUser() {
+        return this.mongoController.isUserOnDatabase(this.userModel);
     }
 
     public ObjectId getID() {
