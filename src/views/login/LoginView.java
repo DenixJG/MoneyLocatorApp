@@ -6,6 +6,7 @@ import org.netbeans.validation.api.builtin.stringvalidation.StringValidators;
 import org.netbeans.validation.api.ui.ValidationGroup;
 import org.netbeans.validation.api.ui.swing.ValidationPanel;
 import views.MainWindow;
+import views.dashboard.DashboardView;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -96,11 +97,13 @@ public class LoginView extends JFrame {
                 System.out.println("[INFO](LoginView): User -> " + user.getUsername());
                 // TODO: 22/10/2021 Mandar mensaje a la ventana principal de que el usuario es correcto
                 // Cerramos la ventana
-                getMainWindow().setVisible(true); // Mostrar ventana
-                dispose();
+                DashboardView dashboardView = new DashboardView(); // Open dashboard
+                getMainWindow().dispose();
             } else {
                 System.err.println("[INFO](LoginView): User -> " + user.getUsername() + ", not exists!");
+                getMainWindow().setVisible(true); // Mostrar ventana
             }
+            dispose();
         }  // TODO: 21/10/2021 Mensaje de error o validación
     }
 

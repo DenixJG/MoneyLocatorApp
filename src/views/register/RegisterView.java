@@ -3,6 +3,7 @@ package views.register;
 import controllers.UserController;
 import models.User;
 import views.MainWindow;
+import views.currency.selector.CurrencySelectorView;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -85,12 +86,14 @@ public class RegisterView extends JFrame {
                 // Registramos el usuario, ya que el nombre de usuario es único.
                 // TODO: 26/10/2021 Agregar panel de validación.
                 userController.registerUser();
-                getMainWindow().setVisible(true);
-                dispose();
+                CurrencySelectorView currencySelectorView = new CurrencySelectorView();
+                getMainWindow().dispose();
             } else {
                 // No se puede registrar el nombre de usuario ya está en la base de datos.
                 System.err.println("[ERR]: El nombre de usuario ya existe en la base de datos");
+                getMainWindow().setVisible(true);
             }
+            dispose();
         }
     }
 
