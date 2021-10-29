@@ -1,6 +1,10 @@
 package views.currency.selector;
 
+import views.dashboard.DashboardView;
+
 import javax.swing.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class CurrencySelectorView extends JFrame {
     private JButton btnSelectCurrency;
@@ -9,8 +13,26 @@ public class CurrencySelectorView extends JFrame {
     private JPanel titlePanel;
     private JLabel lblWindowTitle;
 
+    // Properties
+    String selectedCurrency;
+
+    // Option
+    JOptionPane jOptionPane;
+
     public CurrencySelectorView() {
         initComponents();
+
+        btnSelectCurrency.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (getSelectedCurrency() != null) {
+                    selectedCurrency = getSelectedCurrency();
+                    if (showConfirmation() == JOptionPane.OK_OPTION) {
+                        openDashboardView();
+                    }
+                }
+            }
+        });
     }
 
     /**
@@ -28,4 +50,22 @@ public class CurrencySelectorView extends JFrame {
         setVisible(true); // Mostrar ventana
         setName("CurrencySelectorView");
     }
+
+    private String getSelectedCurrency() {
+        return (String) this.currencyList.getSelectedValue();
+    }
+
+    private void openDashboardView() {
+        DashboardView dashboardView = new DashboardView();
+        this.dispose();
+    }
+
+    private int showConfirmation() {
+        return JOptionPane.showConfirmDialog(this, "Divisa: " + selectedCurrency);
+    }
+
+    public static void main(String[] args) {
+        new CurrencySelectorView();
+    }
+
 }
