@@ -13,7 +13,7 @@ import java.awt.event.MouseEvent;
  * Clase de la ventana principal
  *
  */
-public class MainWindow extends JFrame {
+public class InitialWindow extends JFrame {
     // FIXME: 20/10/2021 Hacer que salga en la barra de tareas la ventana, con extender de JFrame funcionaría.
     private JPanel mainContentPanel;
     private JPanel titlePanel;
@@ -27,7 +27,7 @@ public class MainWindow extends JFrame {
     /**
      * Constructor
      */
-    public MainWindow() {
+    public InitialWindow() {
         initWindow();
         // Login
         btnLogin.addActionListener(new ActionListener() {

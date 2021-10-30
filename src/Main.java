@@ -1,11 +1,6 @@
 import com.formdev.flatlaf.FlatDarkLaf;
-import com.mongodb.client.MongoClient;
-import controllers.MongoController;
-import views.MainWindow;
-
-import javax.imageio.ImageIO;
+import views.InitialWindow;
 import javax.swing.*;
-import java.awt.*;
 
 /**
  * Ejecución de la App
@@ -29,6 +24,6 @@ public class Main {
         }
 
         // Ejecutar APP
-        MainWindow mainWindow = new MainWindow();
+        InitialWindow initialWindow = new InitialWindow();
     }
 }
