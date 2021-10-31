@@ -87,6 +87,7 @@ public class RegisterView extends JFrame {
                 // TODO: 26/10/2021 Agregar panel de validación.
                 userController.registerUser();
                 CurrencySelectorView currencySelectorView = new CurrencySelectorView();
+                currencySelectorView.setUserController(this.userController);
                 getMainWindow().dispose();
             } else {
                 // No se puede registrar el nombre de usuario ya está en la base de datos.

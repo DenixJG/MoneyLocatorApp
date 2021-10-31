@@ -1,5 +1,7 @@
 package views.dashboard;
 
+import controllers.UserController;
+
 import javax.swing.*;
 
 public class DashboardView extends JFrame {
@@ -7,9 +9,11 @@ public class DashboardView extends JFrame {
     private JPanel mainContentPanel;
     private JPanel titlePanel;
 
+    // Controllers
+    UserController userController;
+
     public DashboardView() {
         initComponents();
-
     }
 
     /**
@@ -27,6 +31,14 @@ public class DashboardView extends JFrame {
         setIconImage(new ImageIcon("resources/icons/App-Icon.png").getImage()); // Icono de la APP
         setVisible(true); // Mostrar ventana
         setName("DashboardView");
+    }
+
+    public UserController getUserController() {
+        return userController;
+    }
+
+    public void setUserController(UserController userController) {
+        this.userController = userController;
     }
 
 

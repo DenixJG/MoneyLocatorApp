@@ -1,5 +1,6 @@
 package views.currency.selector;
 
+import controllers.UserController;
 import views.dashboard.DashboardView;
 
 import javax.swing.*;
@@ -12,6 +13,9 @@ public class CurrencySelectorView extends JFrame {
     private JPanel mainContentPanel;
     private JPanel titlePanel;
     private JLabel lblWindowTitle;
+
+    // Controller
+    UserController userController;
 
     // Properties
     String selectedCurrency;
@@ -62,6 +66,14 @@ public class CurrencySelectorView extends JFrame {
 
     private int showConfirmation() {
         return JOptionPane.showConfirmDialog(this, "Divisa: " + selectedCurrency);
+    }
+
+    public UserController getUserController() {
+        return userController;
+    }
+
+    public void setUserController(UserController userController) {
+        this.userController = userController;
     }
 
     public static void main(String[] args) {

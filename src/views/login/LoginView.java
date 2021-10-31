@@ -98,6 +98,7 @@ public class LoginView extends JFrame {
                 // TODO: 22/10/2021 Mandar mensaje a la ventana principal de que el usuario es correcto
                 // Cerramos la ventana
                 DashboardView dashboardView = new DashboardView(); // Open dashboard
+                dashboardView.setUserController(this.userController);
                 getMainWindow().dispose();
             } else {
                 System.err.println("[INFO](LoginView): User -> " + user.getUsername() + ", not exists!");
