@@ -5,7 +5,7 @@ import models.User;
 import org.netbeans.validation.api.builtin.stringvalidation.StringValidators;
 import org.netbeans.validation.api.ui.ValidationGroup;
 import org.netbeans.validation.api.ui.swing.ValidationPanel;
-import views.MainWindow;
+import views.InitialWindow;
 import views.dashboard.DashboardView;
 
 import javax.swing.*;
@@ -22,7 +22,7 @@ public class LoginView extends JFrame {
     private ValidationPanel validationPanel;
     private JButton buttonCancel;
 
-    private MainWindow mainWindow; // Ventana Padre
+    private InitialWindow initialWindow; // Ventana Padre
 
     // Controladores
     private UserController userController;
@@ -138,11 +138,11 @@ public class LoginView extends JFrame {
 
     // Getter y Setter
 
-    public MainWindow getMainWindow() {
-        return mainWindow;
+    public InitialWindow getMainWindow() {
+        return initialWindow;
     }
 
-    public void setMainWindow(MainWindow mainWindow) {
-        this.mainWindow = mainWindow;
+    public void setMainWindow(InitialWindow initialWindow) {
+        this.initialWindow = initialWindow;
     }
 }

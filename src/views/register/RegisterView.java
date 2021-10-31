@@ -2,7 +2,7 @@ package views.register;
 
 import controllers.UserController;
 import models.User;
-import views.MainWindow;
+import views.InitialWindow;
 import views.currency.selector.CurrencySelectorView;
 
 import javax.swing.*;
@@ -22,7 +22,7 @@ public class RegisterView extends JFrame {
     private JLabel lblRepPasswd;
     private JLabel lblCloseWindowIcon;
 
-    private MainWindow mainWindow; // Ventana padre
+    private InitialWindow initialWindow; // Ventana padre
 
     // Controladores
     private UserController userController;
@@ -125,11 +125,11 @@ public class RegisterView extends JFrame {
 
     // Getter y Setter
 
-    public MainWindow getMainWindow() {
-        return mainWindow;
+    public InitialWindow getMainWindow() {
+        return initialWindow;
     }
 
-    public void setMainWindow(MainWindow mainWindow) {
-        this.mainWindow = mainWindow;
+    public void setMainWindow(InitialWindow initialWindow) {
+        this.initialWindow = initialWindow;
     }
 }
